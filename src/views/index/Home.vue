@@ -345,7 +345,7 @@
       },
       activeFormItem(currentItem) {
         this.activeData = currentItem;
-        console.log(currentItem, "=============222=");
+
         this.activeId = currentItem.__config__.formId;
       },
       onEnd(obj) {

@@ -109,7 +109,7 @@ function makeDataObject (dataObject, confClone) {
       // dataObject["v-model"] = confClone.__config__.defaultValue;
 
       dataObject.modelValue = this.conf.__config__.defaultValue;
-      dataObject['onUpdate:modelValue'] = value => this.$emit('update:modelValue', value)
+      dataObject['change'] = value => { console.log("valeu", value) }
 
 
     } else if (key.substr(0, 2) !== '__') {
