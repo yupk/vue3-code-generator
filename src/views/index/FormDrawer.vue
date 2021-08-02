@@ -1,6 +1,8 @@
 <template>
   <div>
-    <el-drawer v-bind="$attrs" v-on="$listeners" @opened="onOpen" @close="onClose">
+    <!-- <el-drawer v-bind="$attrs" v-on="$listeners" @opened="onOpen" @close="onClose"> -->
+          <el-drawer v-bind="$attrs"   @opened="onOpen" @close="onClose">
+
       <div style="height: 100%">
         <el-row style="height: 100%; overflow: auto">
           <el-col :md="24" :lg="12" class="left-editor">
@@ -11,25 +13,25 @@
             </div>
             <el-tabs v-model="activeTab" type="card" class="editor-tabs">
               <el-tab-pane name="html">
-                <span slot="label">
+                <template #label>
                   <i v-if="activeTab === 'html'" class="el-icon-edit" />
                   <i v-else class="el-icon-document" />
                   template
-                </span>
+                </template>
               </el-tab-pane>
               <el-tab-pane name="js">
-                <span slot="label">
+                 <template #label>
                   <i v-if="activeTab === 'js'" class="el-icon-edit" />
                   <i v-else class="el-icon-document" />
                   script
-                </span>
+                 </template>
               </el-tab-pane>
               <el-tab-pane name="css">
-                <span slot="label">
+                 <template #label>
                   <i v-if="activeTab === 'css'" class="el-icon-edit" />
                   <i v-else class="el-icon-document" />
                   css
-                </span>
+                 </template>
               </el-tab-pane>
             </el-tabs>
             <div v-show="activeTab === 'html'" id="editorHtml" class="tab-editor" />
@@ -69,7 +71,8 @@
       </div>
     </el-drawer>
     <resource-dialog
-      :visible.sync="resourceVisible"
+ 
+      v-model:visible="resourceVisible"
       :origin-resource="resources"
       @save="setResource"
     />

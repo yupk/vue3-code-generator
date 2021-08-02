@@ -5,10 +5,20 @@
       width="500px"
       :close-on-click-modal="false"
       :modal-append-to-body="false"
-      v-on="$listeners"
+     
       @open="onOpen"
       @close="onClose"
     >
+    <!-- <el-dialog
+      v-bind="$attrs"
+      width="500px"
+      :close-on-click-modal="false"
+      :modal-append-to-body="false"
+      v-on="$listeners"
+      @open="onOpen"
+      @close="onClose"
+    > -->
+
       <el-row :gutter="15">
         <el-form
           ref="elForm"
@@ -37,14 +47,14 @@
         </el-form>
       </el-row>
 
-      <div slot="footer">
+      <template #footer>
         <el-button @click="close">
           取消
         </el-button>
         <el-button type="primary" @click="handelConfirm">
           确定
         </el-button>
-      </div>
+      </template>
     </el-dialog>
   </div>
 </template>
@@ -105,6 +115,4 @@ export default {
 }
 </script>
 
-<style lang="scss" scoped>
-
-</style>
+ 
