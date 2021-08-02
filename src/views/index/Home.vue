@@ -112,19 +112,23 @@
     />
 
     <form-drawer
-      :visible.sync="drawerVisible"
+     v-model="drawerVisible"
       :form-data="formData"
       size="100%"
       :generate-conf="generateConf"
     />
-    <json-drawer
+    <div>
+      dsldnskld
+      <json-drawer
       size="60%"
-      :visible.sync="jsonDrawerVisible"
+      v-model="jsonDrawerVisible"
       :json-str="JSON.stringify(formData)"
       @refresh="refreshJson"
     />
+    </div>
+    
     <code-type-dialog
-      :visible.sync="dialogVisible"
+     v-model="dialogVisible"
       title="选择生成类型"
       :show-file-name="showFileName"
       @confirm="generate"
