@@ -2,6 +2,7 @@
   import { VueDraggableNext as draggable } from "vue-draggable-next";
 
   import render from "@/components/render/render";
+  
   import { h, resolveComponent } from "vue";
   const components = {
     itemBtns(h, currentItem, index, list) {
@@ -150,9 +151,12 @@
     components: {
       render,
       draggable,
+	   
     },
 
     props: ["currentItem", "index", "drawingList", "activeId", "formConf"],
+  emits: ['update:modelValue'],
+
     render() {
       const layout = layouts[this.currentItem.__config__.layout];
 

@@ -48,7 +48,7 @@
 
     <div class="center-board">
       <div class="action-bar">
-        <el-button icon="el-icon-video-play" type="text" @click="run"> 运行 </el-button>
+        <!-- <el-button icon="el-icon-video-play" type="text" @click="run"> 运行 </el-button> -->
         <el-button icon="el-icon-view" type="text" @click="showJson">
           查看json
         </el-button>
@@ -146,6 +146,9 @@
   import FormDrawer from "./FormDrawer.vue";
   import JsonDrawer from "./JsonDrawer.vue";
   import RightPanel from "./RightPanel.vue";
+  import Index from "@/components/tinymce/index.vue";
+  import axios from 'axios'
+  
   import {
     inputComponents,
     selectComponents,
@@ -199,6 +202,7 @@
       RightPanel,
       CodeTypeDialog,
       DraggableItem,
+	  tinymce:Index
     },
     data() {
       return {
@@ -324,18 +328,18 @@
         const i = this.drawingList.findIndex(
           (item) => item.__config__.renderKey === renderKey,
         );
-        if (i > -1) this.$set(this.drawingList, i, component);
+        if (i > -1) {
+			this.drawingList[i]=component;
+		} 
       },
       fetchData(component) {
         const { dataType, method, url } = component.__config__;
         if (dataType === "dynamic" && method && url) {
           this.setLoading(component, true);
-          this.$axios({
-            method,
-            url,
-          }).then((resp) => {
+          axios.get(url).then((resp) => {
             this.setLoading(component, false);
-            this.setRespData(component, resp.data);
+			console.log(resp.data)
+          this.setRespData(component, resp.data);
           });
         }
       },
@@ -447,9 +451,9 @@
         const script = vueScript(makeUpJs(this.formData, type));
         
         const html = vueTemplate(makeUpHtml(this.formData, type));
-        alert(3323);
+        
         const css = cssStyle(makeUpCss(this.formData));
-        alert(31333);
+       
         return beautifier.html(html + script + css, beautifierConf.html);
       },
       showJson() {

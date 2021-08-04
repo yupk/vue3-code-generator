@@ -1,5 +1,6 @@
 import { deepClone } from '@/utils/index'
 import { h, resolveComponent } from 'vue'
+
 const componentChild = {}
 /**
  * 将./slots中的文件挂载到对象componentChild上
@@ -109,7 +110,7 @@ function makeDataObject (dataObject, confClone) {
       // dataObject["v-model"] = confClone.__config__.defaultValue;
 
       dataObject.modelValue = this.conf.__config__.defaultValue;
-      dataObject['change'] = value => { console.log("valeu", value) }
+      // dataObject['change'] = value => { console.log("valeu", value) }
 
 
     } else if (key.substr(0, 2) !== '__') {
@@ -118,14 +119,14 @@ function makeDataObject (dataObject, confClone) {
       dataObject[key] = val;
 
 
-
-
     }
 
 
 
   });
-  dataObject['value'] = confClone.__config__.defaultValue;
+  // dataObject['value'] = confClone.__config__.defaultValue;
+  
+  console.log(dataObject,"_________________*********___________");
   // dataObject['__slot__'] = confClone.__slot__;
   // console.log(dataObject);
   // 深入数据对象：

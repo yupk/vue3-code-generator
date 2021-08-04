@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <el-drawer v-bind="$attrs" v-on="$listeners" @opened="onOpen" @close="onClose"> -->
-          <el-drawer v-bind="$attrs"   @opened="onOpen" @close="onClose">
+          <el-drawer v-bind="$attrs" :visible="visible"   @opened="onOpen" @close="onClose">
 
       <div style="height: 100%">
         <el-row style="height: 100%; overflow: auto">

@@ -6,6 +6,7 @@
 import loadTinymce from '@/utils/loadTinymce'
 import { plugins, toolbar } from './config'
 import { debounce } from 'throttle-debounce'
+import zh_cn from "./zh_CN"
 
 let num = 1
 
@@ -30,7 +31,8 @@ export default {
   mounted() {
     loadTinymce(tinymce => {
       // eslint-disable-next-line global-require
-      require('./zh_CN')
+      // require('./zh_CN')
+	  zh_cn();
       let conf = {
         selector: `#${this.tinymceId}`,
         language: 'zh_CN',

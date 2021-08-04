@@ -1,5 +1,5 @@
 import loadScript from './loadScript'
-import ELEMENT from 'element-plus'
+import { ElLoading } from 'element-plus';
 import pluginsConfig from './pluginsConfig'
 
 let tinymceObj
@@ -12,7 +12,7 @@ export default function loadTinymce (cb) {
     return
   }
 
-  const loading = ELEMENT.Loading.service({
+  const loading = ElLoading.service({
     fullscreen: true,
     lock: true,
     text: '富文本资源加载中...',
