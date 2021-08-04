@@ -1,6 +1,7 @@
 import loadScript from './loadScript'
-import ELEMENT from 'element-plus'
+
 import pluginsConfig from './pluginsConfig'
+import { ElLoading } from 'element-plus';
 
 // monaco-editor单例
 let monacoEidtor
@@ -18,7 +19,7 @@ export default function loadMonaco (cb) {
   const { monacoEditorUrl: vs } = pluginsConfig
 
   // 使用element ui实现加载提示
-  const loading = ELEMENT.Loading.service({
+  const loading = ElLoading.service({
     fullscreen: true,
     lock: true,
     text: '编辑器资源初始化中...',
@@ -29,8 +30,9 @@ export default function loadMonaco (cb) {
   !window.require && (window.require = {})
   !window.require.paths && (window.require.paths = {})
   window.require.paths.vs = vs
-
+  console.log(window.require, "window.require")
   loadScript(`${vs}/loader.js`, () => {
+    console.log(window.require, "window.require", 222)
     window.require(['vs/editor/editor.main'], () => {
       loading.close()
       monacoEidtor = window.monaco

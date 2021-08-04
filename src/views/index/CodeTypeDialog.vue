@@ -5,11 +5,10 @@
       width="500px"
       :close-on-click-modal="false"
       :modal-append-to-body="false"
-     
       @open="onOpen"
       @close="onClose"
     >
-    <!-- <el-dialog
+      <!-- <el-dialog
       v-bind="$attrs"
       width="500px"
       :close-on-click-modal="false"
@@ -41,78 +40,81 @@
               </el-radio-group>
             </el-form-item>
             <el-form-item v-if="showFileName" label="文件名" prop="fileName">
-              <el-input v-model="formData.fileName" placeholder="请输入文件名" clearable />
+              <el-input
+                v-model="formData.fileName"
+                placeholder="请输入文件名"
+                clearable
+              />
             </el-form-item>
           </el-col>
         </el-form>
       </el-row>
 
       <template #footer>
-        <el-button @click="close">
-          取消
-        </el-button>
-        <el-button type="primary" @click="handelConfirm">
-          确定
-        </el-button>
+        <el-button @click="close"> 取消 </el-button>
+        <el-button type="primary" @click="handelConfirm"> 确定 </el-button>
       </template>
     </el-dialog>
   </div>
 </template>
 <script>
-export default {
-  inheritAttrs: false,
-  props: ['showFileName'],
-  data() {
-    return {
-      formData: {
-        fileName: undefined,
-        type: 'file'
+  export default {
+    inheritAttrs: false,
+    props: ["showFileName"],
+    data() {
+      return {
+        formData: {
+          fileName: undefined,
+          type: "file",
+        },
+        rules: {
+          fileName: [
+            {
+              required: true,
+              message: "请输入文件名",
+              trigger: "blur",
+            },
+          ],
+          type: [
+            {
+              required: true,
+              message: "生成类型不能为空",
+              trigger: "change",
+            },
+          ],
+        },
+        typeOptions: [
+          {
+            label: "页面",
+            value: "file",
+          },
+          {
+            label: "弹窗",
+            value: "dialog",
+          },
+        ],
+      };
+    },
+    computed: {},
+    watch: {},
+    mounted() {},
+    methods: {
+      onOpen() {
+        if (this.showFileName) {
+          this.formData.fileName = `${+new Date()}.vue`;
+        }
       },
-      rules: {
-        fileName: [{
-          required: true,
-          message: '请输入文件名',
-          trigger: 'blur'
-        }],
-        type: [{
-          required: true,
-          message: '生成类型不能为空',
-          trigger: 'change'
-        }]
+      onClose() {},
+      close(e) {
+        this.$emit("update:visible", false);
       },
-      typeOptions: [{
-        label: '页面',
-        value: 'file'
-      }, {
-        label: '弹窗',
-        value: 'dialog'
-      }]
-    }
-  },
-  computed: {
-  },
-  watch: {},
-  mounted() {},
-  methods: {
-    onOpen() {
-      if (this.showFileName) {
-        this.formData.fileName = `${+new Date()}.vue`
-      }
+      handelConfirm() {
+        // this.$refs.elForm.validate(valid => {
+        //   if (!valid) return
+        this.$emit("confirm", { ...this.formData });
+        //   this.close()
+        // })
+      },
     },
-    onClose() {
-    },
-    close(e) {
-      this.$emit('update:visible', false)
-    },
-    handelConfirm() {
-      this.$refs.elForm.validate(valid => {
-        if (!valid) return
-        this.$emit('confirm', { ...this.formData })
-        this.close()
-      })
-    }
-  }
-}
+  };
 </script>
-
- 

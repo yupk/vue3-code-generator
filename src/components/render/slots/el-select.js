@@ -1,9 +1,20 @@
-export default function (h, conf, key) {
+ 
+import { resolveComponent } from 'vue'
+
+
+export default function (h, conf) {
   const list = []
   conf.__slot__.options.forEach(item => {
-    
-    list.push(`<el-option label={item.label} value={item.value} disabled={item.disabled}></el-option>`)
-  })
-  return list
-}
 
+    Array.has
+
+    const props = { label: item.label, value: item.value ,disabled:item.disabled}
+ 
+
+      list.push(h(resolveComponent("el-option"), props, item.label));
+
+  
+  })
+
+  return { default: list }
+}

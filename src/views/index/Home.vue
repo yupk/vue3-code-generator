@@ -112,23 +112,22 @@
     />
 
     <form-drawer
-     v-model="drawerVisible"
+      v-model="drawerVisible"
       :form-data="formData"
       size="100%"
       :generate-conf="generateConf"
     />
     <div>
-      dsldnskld
       <json-drawer
-      size="60%"
-      v-model="jsonDrawerVisible"
-      :json-str="JSON.stringify(formData)"
-      @refresh="refreshJson"
-    />
+        size="60%"
+        v-model="jsonDrawerVisible"
+        :json-str="JSON.stringify(formData)"
+        @refresh="refreshJson"
+      />
     </div>
-    
+
     <code-type-dialog
-     v-model="dialogVisible"
+      v-model="dialogVisible"
       title="选择生成类型"
       :show-file-name="showFileName"
       @confirm="generate"
@@ -348,6 +347,7 @@
         }
       },
       activeFormItem(currentItem) {
+        console.log("===================", currentItem);
         this.activeData = currentItem;
 
         this.activeId = currentItem.__config__.formId;
@@ -402,6 +402,7 @@
       generate(data) {
         const func = this[`exec${titleCase(this.operationType)}`];
         this.generateConf = data;
+        console.log(func);
         func && func(data);
       },
       execRun(data) {
@@ -438,11 +439,17 @@
         });
       },
       generateCode() {
+        // alert(33);
         const { type } = this.generateConf;
+
         this.AssembleFormData();
+        
         const script = vueScript(makeUpJs(this.formData, type));
+        
         const html = vueTemplate(makeUpHtml(this.formData, type));
+        alert(3323);
         const css = cssStyle(makeUpCss(this.formData));
+        alert(31333);
         return beautifier.html(html + script + css, beautifierConf.html);
       },
       showJson() {

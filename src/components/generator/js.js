@@ -1,5 +1,7 @@
 
-const isArray = Object.isArray
+const isArray = (a) => {
+  return Array.isArray(a);
+}
 import { exportDefault, titleCase, deepClone } from '@/utils/index'
 import ruleTrigger from './ruleTrigger'
 
@@ -20,6 +22,7 @@ const inheritAttrs = {
  * @param {String} type 生成类型，文件或弹窗等
  */
 export function makeUpJs (formConfig, type) {
+
   confGlobal = formConfig = deepClone(formConfig)
   const dataList = []
   const ruleList = []
@@ -32,7 +35,7 @@ export function makeUpJs (formConfig, type) {
   formConfig.fields.forEach(el => {
     buildAttributes(el, dataList, ruleList, optionsList, methodList, propsList, uploadVarList, created)
   })
-
+  alert(347)
   const script = buildexport(
     formConfig,
     type,
@@ -45,6 +48,7 @@ export function makeUpJs (formConfig, type) {
     created.join('\n')
   )
   confGlobal = null
+
   return script
 }
 
