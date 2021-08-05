@@ -459,8 +459,8 @@
                 <el-input
                   placeholder="选项值"
                   size="small"
-                  :value="item.value"
-                  @input="setOptionValue(item, $event)"
+				  v-model="item.value"
+                   
                 />
                 <div
                   class="close-btn select-line-icon"
