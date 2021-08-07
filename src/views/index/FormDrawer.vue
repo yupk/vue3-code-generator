@@ -1,7 +1,7 @@
 <template>
   <div>
     <!-- <el-drawer v-bind="$attrs" v-on="$listeners" @opened="onOpen" @close="onClose"> -->
-          <el-drawer v-bind="$attrs" :visible="visible"   @opened="onOpen" @close="onClose">
+          <el-drawer v-bind="$attrs"   @opened="onOpen" @close="onClose">
 
       <div style="height: 100%">
         <el-row style="height: 100%; overflow: auto">
@@ -72,7 +72,7 @@
     </el-drawer>
     <resource-dialog
  
-      v-model:visible="resourceVisible"
+      v-model="resourceVisible"
       :origin-resource="resources"
       @save="setResource"
     />
@@ -132,6 +132,7 @@
         return this.scripts.concat(this.links);
       },
     },
+    emits:['save'],
     watch: {},
     created() {},
     mounted() {

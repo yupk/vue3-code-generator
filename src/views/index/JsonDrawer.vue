@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-drawer v-bind="$attrs" :visible="visible"  @opened="onOpen" @close="onClose">
+    <el-drawer v-bind="$attrs" v-model="visible"  @opened="onOpen" @close="onClose">
       <div class="action-bar" :style="{'text-align': 'left'}">
         <span class="bar-btn" @click="refresh">
           <i class="el-icon-refresh" />
@@ -36,6 +36,7 @@ let monaco
 
 export default {
   components: {},
+  emits:['refresh'],
   props: {
     "visible":{type:Boolean},
     jsonStr: {
@@ -50,7 +51,7 @@ export default {
   watch: {},
   created() {},
   mounted() {
-    console.log(this.$attrs,"-----------");
+    
     window.addEventListener('keydown', this.preventDefaultSave)
     const clipboard = new ClipboardJS('.copy-json-btn', {
       text: trigger => {

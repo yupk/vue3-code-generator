@@ -420,12 +420,7 @@
               placeholder="请输入分隔符"
             />
           </el-form-item>
-          <el-form-item v-if="activeData['picker-options'] !== undefined" label="时间段">
-            <el-input
-              v-model="activeData['picker-options'].selectableRange"
-              placeholder="请输入时间段"
-            />
-          </el-form-item>
+
           <el-form-item v-if="activeData.format !== undefined" label="时间格式">
             <el-input
               :value="activeData.format"
@@ -827,7 +822,7 @@
       </el-scrollbar>
     </div>
 
-    <treeNode-dialog :visible.sync="dialogVisible" title="添加选项" @commit="addNode" />
+    <treeNode-dialog v-model="dialogVisible" title="添加选项" @commit="addNode" />
     <icons-dialog
       v-model:visible="iconsVisible"
       :current="activeData[currentIconModel]"
@@ -840,6 +835,9 @@
   const isArray = (a) => {
     return Array.isArray(a);
   };
+  import {
+    VueDraggableNext
+} from "vue-draggable-next";
   import TreeNodeDialog from "@/views/index/TreeNodeDialog.vue";
   import { isNumberStr } from "@/utils/index";
   import IconsDialog from "@/views/index/IconsDialog.vue";
@@ -868,6 +866,7 @@
     components: {
       TreeNodeDialog,
       IconsDialog,
+      draggable:VueDraggableNext
     },
     props: ["showField", "activeData", "formConf"],
     data() {

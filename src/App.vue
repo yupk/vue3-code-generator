@@ -1,6 +1,6 @@
 <template>
   <div>
-   <vue-editor @updateCode="print_code" device="mobile"></vue-editor>
+   <vue-editor @updateCode="print_code" device="pc"></vue-editor>
   </div>
 </template>
 

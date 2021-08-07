@@ -16,6 +16,8 @@
 </template>
 
 <script>
+const modules = import.meta.globEager('../icons/svg/*.svg');
+
 // doc: https://panjiachen.github.io/vue-element-admin-site/feature/component/svg-icon.html#usage
 function isExternal(path) {
   return /^(https?:|mailto:|tel:)/.test(path)

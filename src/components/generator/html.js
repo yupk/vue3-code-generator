@@ -108,9 +108,20 @@ const layouts = {
 		const align = scheme.type === 'default' ? '' : `align="${scheme.align}"`
 		const gutter = scheme.gutter ? `:gutter="${scheme.gutter}"` : ''
 		const children = config.children.map(el => layouts[el.__config__.layout](el))
-		let str = `<el-row ${type} ${justify} ${align} ${gutter}>
-      ${children.join('\n')}
+		let str = children.join('\n');
+
+		if(config.isCard){
+			str = `<el-card><el-row ${type} ${justify} ${align} ${gutter}>
+			<el-col :span="24">
+      ${str}</el-col>
+    </el-row></el-card>`
+		}else{
+			str = `<el-row ${type} ${justify} ${align} ${gutter}>
+    ${str} 
     </el-row>`
+		}
+		
+
 		str = colWrapper(scheme, str)
 		return str
 	}

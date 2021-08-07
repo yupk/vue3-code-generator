@@ -5,7 +5,7 @@
       title="外部资源引用"
       width="600px"
       :close-on-click-modal="false"
-      v-on="$listeners"
+   
       @open="onOpen"
       @close="onClose"
     >
@@ -65,6 +65,7 @@ import { deepClone } from '@/utils/index'
 export default {
   components: {},
   inheritAttrs: false,
+  emits:['save'],
   props: ['originResource'],
   data() {
     return {

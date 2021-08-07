@@ -1,4 +1,19 @@
-export default function (h, conf, key) {
-  return { default: conf.__slot__[key] }
+export default function (h, conf) {
+
+  const slot = {}
+
+
+
+  for (let k in conf.__slot__) {
+
+
+    slot[k] = () => { return conf.__slot__[k] }
+
+
+  }
+
+
+
+  return slot;
 }
 

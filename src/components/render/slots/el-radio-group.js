@@ -1,12 +1,21 @@
-export default function (h, conf, key) {
+
+import { resolveComponent } from 'vue'
+
+
+export default function (h, conf) {
   const list = []
   conf.__slot__.options.forEach(item => {
-    if (conf.__config__.optionType === 'button') {
-      list.push(`<el-radio-button label={item.value}>{item.label}</el-radio-button>`)
-    } else {
-      list.push(`<el-radio label={item.value} border={conf.border}>{item.label}</el-radio>`)
-    }
-  })
-  return list
+  const attrs = { label: item.value }
+
+  if (conf.__config__.optionType === 'button') {
+    list.push(h(resolveComponent('el-radio-button'), attrs, item.label))
+  } else {
+    attrs['border'] = conf.border;
+    list.push(h(resolveComponent('el-radio'), attrs, item.label))
+
+  }
+})
+  return { default: list}
 }
+
 

@@ -3,8 +3,6 @@
     <el-dialog
       v-bind="$attrs"
       :close-on-click-modal="false"
-      :modal-append-to-body="false"
-      v-on="$listeners"
       @open="onOpen"
       @close="onClose"
     >
@@ -25,6 +23,7 @@
             <el-form-item label="选项值" prop="value">
               <el-input v-model="formData.value" placeholder="请输入选项值" clearable>
                 <el-select slot="append" v-model="dataType" :style="{ width: '100px' }">
+
                   <el-option
                     v-for="(item, index) in dataTypeOptions"
                     :key="index"
@@ -38,10 +37,10 @@
           </el-col>
         </el-form>
       </el-row>
-      <div slot="footer">
+      <template  #footer>
         <el-button type="primary" @click="handelConfirm"> 确定 </el-button>
         <el-button @click="close"> 取消 </el-button>
-      </div>
+      </template>
     </el-dialog>
   </div>
 </template>
@@ -54,6 +53,7 @@
   export default {
     components: {},
     inheritAttrs: false,
+    emits:['commit'],
     props: [],
     data() {
       return {
@@ -112,7 +112,7 @@
       },
       onClose() {},
       close() {
-        this.$emit("update:visible", false);
+        // this.$emit("update:visible", false);
       },
       handelConfirm() {
         this.$refs.elForm.validate((valid) => {

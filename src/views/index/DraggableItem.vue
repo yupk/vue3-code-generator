@@ -69,6 +69,7 @@
         </el-col>
       );
     },
+
     rowFormItem(h, currentItem, index, list) {
       const { onActiveItem, onDeleteItem, onCopyItem } = this.$attrs;
       const config = currentItem.__config__;
@@ -87,6 +88,32 @@
             {child}
           </el-row>
         );
+      }
+
+      if(config.isCard){
+
+        return (
+        <el-col span={config.span}>
+        <el-card onclick={(event) => {
+              // alert(12);
+              onActiveItem(currentItem);
+              event.stopPropagation();
+            }}  class={className}>
+          
+            <span class="component-name">{config.componentName}</span>
+            <draggable
+              list={config.children || []}
+              animation={340}
+              group="componentsGroup"
+              class="drag-wrapper"
+            >
+              {child}
+            </draggable>
+            {components.itemBtns.apply(this, arguments)}
+          
+          </el-card>
+        </el-col>
+      );
       }
       return (
         <el-col span={config.span}>
@@ -113,6 +140,8 @@
         </el-col>
       );
     },
+
+  
     raw(h, currentItem, index, list) {
       const config = currentItem.__config__;
       const child = renderChildren.apply(this, arguments);
@@ -122,7 +151,6 @@
           conf={currentItem}
           onInput={(event) => {
             config.defaultValue = event;
-            // this.$set(config, "defaultValue", event);
           }}
         >
           {child}
@@ -151,10 +179,10 @@
     components: {
       render,
       draggable,
-	   
+
     },
 
-    props: ["currentItem", "index", "drawingList", "activeId", "formConf"],
+  props: ["currentItem", "index", "drawingList", "activeId", "formConf"],
   emits: ['update:modelValue'],
 
     render() {

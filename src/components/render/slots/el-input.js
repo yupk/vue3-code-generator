@@ -1,19 +1,20 @@
-export default function (h, conf, key) {
+export default function (h, conf) {
 
   const slot = {}
 
-  if ("__slot__" in conf) {
 
 
-    if ("append" in conf.__slot__ && conf.__slot__.append) {
-      slot['append'] = conf.__slot__.append
-    }
+  for (let k in conf.__slot__) {
 
-    if ("prepend" in conf.__slot__ && conf.__slot__.prepend) {
-      slot['prepend'] = conf.__slot__.prepend
+    if (conf.__slot__[k]) {
+      slot[k] = () => {
+        return conf.__slot__[k]
+      }
     }
   }
-  return slot;
 
+
+
+  return slot;
 }
 

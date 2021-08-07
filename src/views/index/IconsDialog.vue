@@ -3,7 +3,7 @@
     <el-dialog
       v-model="visible"
       width="980px"
-      :modal-append-to-body="false"
+  
       @open="onOpen"
       @close="onClose"
     >

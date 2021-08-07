@@ -40,12 +40,8 @@ function mountSlotFiles (h, confClone) {
 
   if (childObjs) {
     Object.keys(childObjs).forEach(key => {
-      console.log(key, "08883*")
       const childFunc = childObjs[key];
-
-      children = childFunc(h, confClone, key);
-
-
+      children = childFunc( h,confClone);
     })
   }
 
@@ -173,7 +169,7 @@ export default {
 
     makeDataObject.call(this, dataObject, confClone);
 
-    console.log(dataObject, "------------------", children, componentChild)
+    console.log(dataObject, "--------+++++----------", children, componentChild)
 
     // 将json表单配置转化为vue render可以识别的 “数据对象（dataObject）”
     // buildDataObject.call(this, confClone, dataObject)

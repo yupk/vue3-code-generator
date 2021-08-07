@@ -4,19 +4,11 @@
       v-bind="$attrs"
       width="500px"
       :close-on-click-modal="false"
-      :modal-append-to-body="false"
+  
       @open="onOpen"
       @close="onClose"
     >
-      <!-- <el-dialog
-      v-bind="$attrs"
-      width="500px"
-      :close-on-click-modal="false"
-      :modal-append-to-body="false"
-      v-on="$listeners"
-      @open="onOpen"
-      @close="onClose"
-    > -->
+      
 
       <el-row :gutter="15">
         <el-form
@@ -61,6 +53,7 @@
   export default {
     inheritAttrs: false,
     props: ["showFileName"],
+    emits:['confirm'],
     data() {
       return {
         formData: {
@@ -106,7 +99,7 @@
       },
       onClose() {},
       close(e) {
-        this.$emit("update:visible", false);
+        // this.$emit("update:visible", false);
       },
       handelConfirm() {
         // this.$refs.elForm.validate(valid => {

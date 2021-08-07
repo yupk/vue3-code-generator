@@ -6,7 +6,7 @@ export default function (h, conf) {
   const list = []
   conf.__slot__.options.forEach(item => {
 
-    Array.has
+
 
     const props = { label: item.label, value: item.value ,disabled:item.disabled}
  
