@@ -3,7 +3,7 @@
     <div class="left-board">
         <div class="logo-wrapper">
             <div class="logo">
-                <img :src="logo" alt="logo" /> Form Generator
+                Vue3  Form Generator
                 <a class="github" href="https://github.com/JakHuang/form-generator" target="_blank">
                     <img src="https://github.githubassets.com/pinned-octocat.svg" alt />
                 </a>
@@ -57,11 +57,11 @@
         </el-scrollbar>
     </div>
 
-    <right-panel :active-data="activeData" :form-conf="formConf" :show-field="!!drawingList.length" @tag-change="tagChange" @fetch-data="fetchData" />
+    <right-panel   :active-data="activeData" :form-conf="formConf" :show-field="!!drawingList.length" @tag-change="tagChange" @fetch-data="fetchData" />
 
     <form-drawer v-model="drawerVisible" :form-data="formData" size="100%" :generate-conf="generateConf" />
     <div>
-        <json-drawer size="60%" v-model="jsonDrawerVisible" :json-str="JSON.stringify(formData)" @refresh="refreshJson" />
+        <json-drawer size="60%"  v-model="jsonDrawerVisible" :json-str="JSON.stringify(formData)" @refresh="refreshJson" />
     </div>
 
     <code-type-dialog v-model="dialogVisible" title="选择生成类型" :show-file-name="showFileName" @confirm="generate" />
@@ -70,9 +70,7 @@
 </template>
 
 <script>
-import {
-    defineComponent
-} from "vue";
+ 
 import {
     VueDraggableNext
 } from "vue-draggable-next";
@@ -195,6 +193,7 @@ export default {
     },
     computed: {},
     watch: {
+     
         // eslint-disable-next-line func-names
         "activeData.__config__.label": function (val, oldVal) {
             if (
@@ -432,8 +431,9 @@ export default {
             return beautifier.html(html + script + css, beautifierConf.html);
         },
         showJson() {
-            this.AssembleFormData();
+          
             this.jsonDrawerVisible = true;
+              this.AssembleFormData();
         },
         download() {
             this.dialogVisible = true;

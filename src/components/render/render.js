@@ -105,8 +105,10 @@ function makeDataObject (dataObject, confClone) {
       // vModel.call(this, dataObject, confClone.__config__.defaultValue)
       // dataObject["v-model"] = confClone.__config__.defaultValue;
 
-      dataObject.modelValue = this.conf.__config__.defaultValue;
-      // dataObject['change'] = value => { console.log("valeu", value) }
+      dataObject["model-value"] = this.conf.__config__.defaultValue;
+      dataObject['onUpdate:modelValue'] = value => { 
+		  this.conf.__config__.defaultValue=value
+	  }
 
 
     } else if (key.substr(0, 2) !== '__') {
