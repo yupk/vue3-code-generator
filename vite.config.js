@@ -5,9 +5,6 @@ import vueJsx from "@vitejs/plugin-vue-jsx";
 import styleImport from 'vite-plugin-style-import'
 
 import { svgBuilder } from './src/plugins/svgBuilder';
- 
-
-
 const { join, resolve } = require('path')
 
 const D = (s) => {
