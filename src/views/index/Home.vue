@@ -4,11 +4,7 @@
         <div class="logo-wrapper">
             <div class="logo">
                 Vue3  Form Generator
-<<<<<<< HEAD
                 <a class="github" href="https://github.com/yupk/form-generator-vue3" target="_blank">
-=======
-                <a class="github" href="https://github.com/JakHuang/form-generator" target="_blank">
->>>>>>> 3c1be4e2b29896a7eae8207b4d78068fb930cb8a
                     <img src="https://github.githubassets.com/pinned-octocat.svg" alt />
                 </a>
             </div>
