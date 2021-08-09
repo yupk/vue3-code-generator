@@ -1,6 +1,6 @@
 <template>
   <div>
-    <el-drawer v-bind="$attrs" v-model="visible"  @opened="onOpen" @close="onClose">
+    <el-drawer v-bind="$attrs" v-model="modelValue"  @opened="onOpen" @close="onClose">
       <div class="action-bar" :style="{'text-align': 'left'}">
         <span class="bar-btn" @click="refresh">
           <i class="el-icon-refresh" />
@@ -14,7 +14,7 @@
           <i class="el-icon-download" />
           导出JSON文件
         </span>
-        <span class="bar-btn delete-btn" @click="$emit('update:modelValue', false)">
+        <span class="bar-btn delete-btn" @click="modelValue=false">
           <i class="el-icon-circle-close" />
           关闭
         </span>
@@ -38,7 +38,7 @@ export default {
   components: {},
   emits:['refresh'],
   props: {
-    "visible":{type:Boolean},
+    modelValue:{type:Boolean},
     jsonStr: {
       type: String,
       required: true
