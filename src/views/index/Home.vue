@@ -46,7 +46,7 @@
             </el-button>
         </div>
         <el-scrollbar class="center-scrollbar" :class="device">
-            <el-form :size="formConf.size" :label-position="formConf.labelPosition" :disabled="formConf.disabled" :label-width="formConf.labelWidth + 'px'" style="padding: 10px">
+            <el-form :size="formConf.size" :label-position="formConf.labelPosition" :disabled="formConf.disabled" :label-width="formConf.labelWidth + 'px'" style="padding: 10px;height: 100%;">
                 <draggable class="drawing-board" component="el-row" :gutter="formConf.gutter" :list="drawingList" :animation="340" group="componentsGroup">
                     <draggable-item v-for="(item, index) in drawingList" :key="item.renderKey" :drawing-list="drawingList" :current-item="item" :index="index" :active-id="activeId" :form-conf="formConf" @activeItem="activeFormItem" @copyItem="drawingItemCopy" @deleteItem="drawingItemDelete" />
                 </draggable>
@@ -494,7 +494,13 @@ export default {
 
 <style lang="scss">
 @import "@/styles/home";
-
+.el-scrollbar__view{
+    height:100%;
+}
+.drawing-board{
+ align-content: flex-start;
+}
+   
 .mobile,
 .pad {
     margin: auto;
