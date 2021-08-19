@@ -541,12 +541,13 @@ export const layoutComponents = [
       label: '分割线',
       showLabel: false,
       changeTag: false,
-      labelWidth: null,
+
+
       tag: 'el-divider',
 
       tagIcon: 'line',
 
-      layout: 'raw',
+      layout: 'colFormItem',
       document: 'https://element-plus.gitee.io/#/zh-CN/component/el-divider'
     },
     __slot__: {

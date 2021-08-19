@@ -416,6 +416,11 @@
               placeholder="请输入按钮文字"
             />
           </el-form-item>
+
+          <el-form-item v-if="activeData.__config__.tag === 'el-divider'" label="文案">
+            <el-input v-model="activeData.__slot__.default" placeholder="文案" />
+          </el-form-item>
+
           <el-form-item v-if="activeData['range-separator'] !== undefined" label="分隔符">
             <el-input
               v-model="activeData['range-separator']"

@@ -4,7 +4,7 @@ import ruleTrigger from './ruleTrigger'
 let confGlobal
 let someSpanIsNot24
 
-export function dialogWrapper(str) {
+export function dialogWrapper (str) {
 	return `<el-dialog v-bind="$attrs" v-on="$listeners" @open="onOpen" @close="onClose" title="Dialog Titile">
     ${str}
     <div slot="footer">
@@ -14,7 +14,7 @@ export function dialogWrapper(str) {
   </el-dialog>`
 }
 
-export function vueTemplate(str) {
+export function vueTemplate (str) {
 	return `<template>
     <div>
       ${str}
@@ -22,19 +22,19 @@ export function vueTemplate(str) {
   </template>`
 }
 
-export function vueScript(str) {
+export function vueScript (str) {
 	return `<script>
     ${str}
   </script>`
 }
 
-export function cssStyle(cssStr) {
+export function cssStyle (cssStr) {
 	return `<style>
     ${cssStr}
   </style>`
 }
 
-function buildFormTemplate(scheme, child, type) {
+function buildFormTemplate (scheme, child, type) {
 	let labelPosition = ''
 	if (scheme.labelPosition !== 'right') {
 		labelPosition = `label-position="${scheme.labelPosition}"`
@@ -55,7 +55,7 @@ function buildFormTemplate(scheme, child, type) {
 	return str
 }
 
-function buildFromBtns(scheme, type) {
+function buildFromBtns (scheme, type) {
 	let str = ''
 	if (scheme.formBtns && type === 'file') {
 		str = `<el-form-item size="large">
@@ -72,7 +72,7 @@ function buildFromBtns(scheme, type) {
 }
 
 // span不为24的用el-col包裹
-function colWrapper(scheme, str) {
+function colWrapper (scheme, str) {
 	if (someSpanIsNot24 || scheme.__config__.span !== 24) {
 		return `<el-col :span="${scheme.__config__.span}">
       ${str}
@@ -82,7 +82,7 @@ function colWrapper(scheme, str) {
 }
 
 const layouts = {
-	colFormItem(scheme) {
+	colFormItem (scheme) {
 		const config = scheme.__config__
 		let labelWidth = ''
 		let label = `label="${config.label}"`
@@ -101,7 +101,7 @@ const layouts = {
 		str = colWrapper(scheme, str)
 		return str
 	},
-	rowFormItem(scheme) {
+	rowFormItem (scheme) {
 		const config = scheme.__config__
 		const type = scheme.type === 'default' ? '' : `type="${scheme.type}"`
 		const justify = scheme.type === 'default' ? '' : `justify="${scheme.justify}"`
@@ -110,17 +110,17 @@ const layouts = {
 		const children = config.children.map(el => layouts[el.__config__.layout](el))
 		let str = children.join('\n');
 
-		if(config.isCard){
+		if (config.isCard) {
 			str = `<el-card><el-row ${type} ${justify} ${align} ${gutter}>
 			<el-col :span="24">
       ${str}</el-col>
     </el-row></el-card>`
-		}else{
+		} else {
 			str = `<el-row ${type} ${justify} ${align} ${gutter}>
     ${str} 
     </el-row>`
 		}
-		
+
 
 		str = colWrapper(scheme, str)
 		return str
@@ -369,7 +369,7 @@ const tags = {
 	}
 }
 
-function attrBuilder(el) {
+function attrBuilder (el) {
 	return {
 		tag: el.__config__.tag,
 		vModel: `v-model="${confGlobal.formModel}.${el.__vModel__}"`,
@@ -381,7 +381,7 @@ function attrBuilder(el) {
 }
 
 // el-buttin 子级
-function buildElButtonChild(scheme) {
+function buildElButtonChild (scheme) {
 	const children = []
 	const slot = scheme.__slot__ || {}
 	if (slot.default) {
@@ -391,7 +391,7 @@ function buildElButtonChild(scheme) {
 }
 
 // el-input 子级
-function buildElInputChild(scheme) {
+function buildElInputChild (scheme) {
 	const children = []
 	const slot = scheme.__slot__
 	if (slot && slot.prepend) {
@@ -404,19 +404,19 @@ function buildElInputChild(scheme) {
 }
 
 // el-select 子级
-function buildElSelectChild(scheme) {
+function buildElSelectChild (scheme) {
 	const children = []
 	const slot = scheme.__slot__
 	if (slot && slot.options && slot.options.length) {
 		children.push(
 			`<el-option v-for="(item, index) in ${scheme.__vModel__}Options" :key="index" :label="item.label" :value="item.value" :disabled="item.disabled"></el-option>`
-			)
+		)
 	}
 	return children.join('\n')
 }
 
 // el-radio-group 子级
-function buildElRadioGroupChild(scheme) {
+function buildElRadioGroupChild (scheme) {
 	const children = []
 	const slot = scheme.__slot__
 	const config = scheme.__config__
@@ -425,13 +425,13 @@ function buildElRadioGroupChild(scheme) {
 		const border = config.border ? 'border' : ''
 		children.push(
 			`<${tag} v-for="(item, index) in ${scheme.__vModel__}Options" :key="index" :label="item.value" :disabled="item.disabled" ${border}>{{item.label}}</${tag}>`
-			)
+		)
 	}
 	return children.join('\n')
 }
 
 // el-checkbox-group 子级
-function buildElCheckboxGroupChild(scheme) {
+function buildElCheckboxGroupChild (scheme) {
 	const children = []
 	const slot = scheme.__slot__
 	const config = scheme.__config__
@@ -440,20 +440,20 @@ function buildElCheckboxGroupChild(scheme) {
 		const border = config.border ? 'border' : ''
 		children.push(
 			`<${tag} v-for="(item, index) in ${scheme.__vModel__}Options" :key="index" :label="item.value" :disabled="item.disabled" ${border}>{{item.label}}</${tag}>`
-			)
+		)
 	}
 	return children.join('\n')
 }
 
 // el-upload 子级
-function buildElUploadChild(scheme) {
+function buildElUploadChild (scheme) {
 	const list = []
 	const config = scheme.__config__
 	if (scheme['list-type'] === 'picture-card') list.push('<i class="el-icon-plus"></i>')
 	else list.push(`<el-button size="small" type="primary" icon="el-icon-upload">${config.buttonText}</el-button>`)
 	if (config.showTip) list.push(
 		`<div slot="tip" class="el-upload__tip">只能上传不超过 ${config.fileSize}${config.sizeUnit} 的${scheme.accept}文件</div>`
-		)
+	)
 	return list.join('\n')
 }
 
@@ -462,14 +462,17 @@ function buildElUploadChild(scheme) {
  * @param {Object} formConfig 整个表单配置
  * @param {String} type 生成类型，文件或弹窗等
  */
-export function makeUpHtml(formConfig, type) {
+export function makeUpHtml (formConfig, type) {
 	const htmlList = []
 	confGlobal = formConfig
 	// 判断布局是否都沾满了24个栅格，以备后续简化代码结构
 	someSpanIsNot24 = formConfig.fields.some(item => item.__config__.span !== 24)
 	// 遍历渲染每个组件成html
 	formConfig.fields.forEach(el => {
-		htmlList.push(layouts[el.__config__.layout](el))
+		if (el.__config__.layout in layouts) {
+			htmlList.push(layouts[el.__config__.layout](el))
+		}
+
 	})
 	const htmlStr = htmlList.join('\n')
 	// 将组件代码放进form标签

@@ -47,7 +47,6 @@
     </div>
 
     <div class="center-board">
-<<<<<<< HEAD
       <div class="action-bar">
         <el-button icon="el-icon-video-play" type="text" @click="updateCode">
           保存代码
@@ -76,7 +75,7 @@
           :label-position="formConf.labelPosition"
           :disabled="formConf.disabled"
           :label-width="formConf.labelWidth + 'px'"
-          style="padding: 10px"
+          style="padding: 10px; height: 100%"
         >
           <draggable
             class="drawing-board"
@@ -104,33 +103,6 @@
           </div>
         </el-form>
       </el-scrollbar>
-=======
-        <div class="action-bar">
-            <el-button icon="el-icon-video-play" type="text" @click="updateCode"> 保存代码 </el-button>
-            <el-button icon="el-icon-view" type="text" @click="showJson">
-                查看json
-            </el-button>
-            <el-button icon="el-icon-download" type="text" @click="download">
-                导出vue文件
-            </el-button>
-            <el-button class="copy-btn-main" icon="el-icon-document-copy" type="text" @click="copy">
-                复制代码
-            </el-button>
-            <el-button class="delete-btn" icon="el-icon-delete" type="text" @click="empty">
-                清空
-            </el-button>
-        </div>
-        <el-scrollbar class="center-scrollbar" :class="device">
-            <el-form :size="formConf.size" :label-position="formConf.labelPosition" :disabled="formConf.disabled" :label-width="formConf.labelWidth + 'px'" style="padding: 10px;height: 100%;">
-                <draggable class="drawing-board" component="el-row" :gutter="formConf.gutter" :list="drawingList" :animation="340" group="componentsGroup">
-                    <draggable-item v-for="(item, index) in drawingList" :key="item.renderKey" :drawing-list="drawingList" :current-item="item" :index="index" :active-id="activeId" :form-conf="formConf" @activeItem="activeFormItem" @copyItem="drawingItemCopy" @deleteItem="drawingItemDelete" />
-                </draggable>
-                <div v-show="!drawingList.length" class="empty-info">
-                    从左侧拖入或点选组件进行表单设计
-                </div>
-            </el-form>
-        </el-scrollbar>
->>>>>>> 1b331604d4ea8836f014265d7a52ee8b32d62d0a
     </div>
 
     <right-panel
@@ -420,7 +392,7 @@
         const config = item.__config__;
         config.formId = ++this.idGlobal;
         config.renderKey = `${config.formId}${+new Date()}`; // 改变renderKey后可以实现强制更新组件
-        if (config.layout === "colFormItem") {
+        if (config.layout === "colFormItem" && config.tag != "el-divider") {
           item.__vModel__ = `field${this.idGlobal}`;
         } else if (config.layout === "rowFormItem") {
           config.componentName = `row${this.idGlobal}`;
@@ -566,23 +538,10 @@
 </script>
 
 <style lang="scss">
-<<<<<<< HEAD
   @import "@/styles/home";
   @import "@/styles/index";
   .mobile,
   .pad {
-=======
-@import "@/styles/home";
-.el-scrollbar__view{
-    height:100%;
-}
-.drawing-board{
- align-content: flex-start;
-}
-   
-.mobile,
-.pad {
->>>>>>> 1b331604d4ea8836f014265d7a52ee8b32d62d0a
     margin: auto;
     background: #fafafa;
     -webkit-box-shadow: #ebedf0 0 4px 12px;
