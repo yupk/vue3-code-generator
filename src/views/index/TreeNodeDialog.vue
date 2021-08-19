@@ -23,7 +23,6 @@
             <el-form-item label="选项值" prop="value">
               <el-input v-model="formData.value" placeholder="请输入选项值" clearable>
                 <el-select slot="append" v-model="dataType" :style="{ width: '100px' }">
-
                   <el-option
                     v-for="(item, index) in dataTypeOptions"
                     :key="index"
@@ -37,7 +36,7 @@
           </el-col>
         </el-form>
       </el-row>
-      <template  #footer>
+      <template #footer>
         <el-button type="primary" @click="handelConfirm"> 确定 </el-button>
         <el-button @click="close"> 取消 </el-button>
       </template>
@@ -53,7 +52,7 @@
   export default {
     components: {},
     inheritAttrs: false,
-    emits:['commit'],
+    emits: ["commit"],
     props: [],
     data() {
       return {
@@ -112,7 +111,7 @@
       },
       onClose() {},
       close() {
-        // this.$emit("update:visible", false);
+        context.emit("update:modelValue", false);
       },
       handelConfirm() {
         this.$refs.elForm.validate((valid) => {

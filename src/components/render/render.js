@@ -41,7 +41,7 @@ function mountSlotFiles (h, confClone) {
   if (childObjs) {
     Object.keys(childObjs).forEach(key => {
       const childFunc = childObjs[key];
-      children = childFunc( h,confClone);
+      children = childFunc(h, confClone);
     })
   }
 
@@ -106,9 +106,9 @@ function makeDataObject (dataObject, confClone) {
       // dataObject["v-model"] = confClone.__config__.defaultValue;
 
       dataObject["model-value"] = this.conf.__config__.defaultValue;
-      dataObject['onUpdate:modelValue'] = value => { 
-		  this.conf.__config__.defaultValue=value
-	  }
+      dataObject['onUpdate:modelValue'] = value => {
+        this.conf.__config__.defaultValue = value
+      }
 
 
     } else if (key.substr(0, 2) !== '__') {
@@ -123,8 +123,8 @@ function makeDataObject (dataObject, confClone) {
 
   });
   // dataObject['value'] = confClone.__config__.defaultValue;
-  
-  console.log(dataObject,"_________________*********___________");
+
+
   // dataObject['__slot__'] = confClone.__slot__;
   // console.log(dataObject);
   // 深入数据对象：
@@ -171,7 +171,7 @@ export default {
 
     makeDataObject.call(this, dataObject, confClone);
 
-    console.log(dataObject, "--------+++++----------", children, componentChild)
+    console.log(dataObject, "--------++dataObject+++----------", children, componentChild)
 
     // 将json表单配置转化为vue render可以识别的 “数据对象（dataObject）”
     // buildDataObject.call(this, confClone, dataObject)

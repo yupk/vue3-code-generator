@@ -145,7 +145,8 @@ export const inputComponents = [
     },
     placeholder: '请输入',
     height: 300, // 编辑器高度
-    branding: false // 隐藏右下角品牌烙印
+    branding: false,// 隐藏右下角品牌烙印
+    id: 'editor'
   }
 ]
 
