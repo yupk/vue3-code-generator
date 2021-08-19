@@ -3,7 +3,7 @@
   "version": "0.1.0",
   "scripts": {
     "dev": "vite",
-    "builds": "vite build --base=/docs/",
+    "builds": "vite build --base=/form-generator-vue3/",
     "build": "vite build",
     "serve": "vite preview"
   },
