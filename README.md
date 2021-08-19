@@ -2,7 +2,7 @@
 ## 简介
 本项目以 https://github.com/JakHuang/form-generator 为基础，对vue3 和elementu-next 进行了适配
 
-
+## 在线预览 [在线预览](https://yupk.github.io/form-generator-vue3/)
 ## 使用方法
 
 main.js
