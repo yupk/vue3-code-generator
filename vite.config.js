@@ -16,7 +16,15 @@ const D = (s) => {
 
 export default defineConfig({
 
-  
+  build: {
+    rollupOptions: {
+      input: {
+        main: "./index.html",
+        mono2: "./tool.html",
+      },
+    },
+},
+
 
   resolve: {
     alias: [{ find: (new RegExp(/^@\/.+/)), replacement: D }],
