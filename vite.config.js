@@ -33,7 +33,7 @@ export default defineConfig({
           return `element-theme-chalk/lib/${name}.css`;
         },
         resolveComponent: (name) => {
-          return `element-plus/lib/${name}`;
+          return `element-plus/lib/components/index`;
         },
       },
 

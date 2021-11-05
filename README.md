@@ -1,21 +1,66 @@
-# element-plus-vite-starter
+![image](https://ae01.alicdn.com/kf/U51bfb661aba945b48a4c71774421d414C.gif)
+## 简介
+本项目借鉴  https://github.com/JakHuang/form-generator ，用vue3 和elementu-next 进行了重新
 
-> A starter kit for Element Plus with Vite
+## 在线预览 
+[地址](https://yupk.github.io/vue3-code-generator/)
 
-<img width="800" alt="Element Plus" src="https://user-images.githubusercontent.com/10731096/97282764-0726eb80-187a-11eb-9658-6dc98ccb8f8d.png">
+## 使用方法
 
-
-## Project setup
-```
-npm install
-```
-
-### Compiles and hot-reloads for development
-```
-npm run dev
+main.js
 ```
 
-### Compiles and minifies for production
+import {
+  createApp
+} from 'vue';
+import App from './App.vue';
+import ElementPlus from 'element-plus';
+import 'element-plus/theme-chalk/index.css';
+import SvgIcon from '@/components/form/SvgIcon/index.vue';
+import {
+  VueDraggableNext
+} from "vue-draggable-next";
+import DraggableWarp from "@/components/form/DraggableWarp.vue";
+import OptionInput from "@/components/form/OptionInput.vue";
+import UploadWarp from "@/components/form/elementWarp/UploadWarp.vue";
+import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import hljs from 'highlight.js';
+import 'highlight.js/styles/googlecode.css' //样式文件
+
+
+const app = createApp(App);
+app.use(ElementPlus, {
+  locale: zhCn,
+});
+
+app.component("draggable", VueDraggableNext);
+app.component("draggable-warp", DraggableWarp);
+app.component("option-input", OptionInput);
+app.component("svg-icon", SvgIcon);
+app.component("upload-warp", UploadWarp);
+
+
+app.directive('highlight', function (el) {
+  let blocks = el.querySelectorAll('pre code');
+  setTimeout(() => {
+    blocks.forEach((block) => {
+      hljs.highlightBlock(block)
+    })
+  }, 200)
+})
+
+app.mount('#app');
+
 ```
-npm run build
+然后就可以在项目任意处调用表单设计器了
+如：
 ```
+<template>
+  <div>
+  <page-generator device="pc" />
+
+  </div>
+</template>
+```
+
+

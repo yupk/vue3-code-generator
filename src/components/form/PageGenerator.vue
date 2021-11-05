@@ -91,9 +91,9 @@
 import PageDrawer from "@/components/form/PageDrawer.vue";
 import PagePanel from "@/components/form/PagePanel.vue";
 import PageSetting from "@/components/form/PageSetting.vue";
-
 import useClipboard from 'vue-clipboard3';
-import { ElMessage } from 'element-plus';
+
+import {ElMessage} from 'element-plus';
 
 import { saveAs } from "file-saver";
 
@@ -249,7 +249,7 @@ export default defineComponent({
       const codeStr = generate(settings);
       try {
         await toClipboard(codeStr);
-        ElMessage("复制成功！")
+        ElMessage.success("复制成功！")
         console.log('Copied to clipboard')
       } catch (e) {
         console.error(e)
