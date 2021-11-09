@@ -249,7 +249,7 @@ export default defineComponent({
       const codeStr = generate(settings);
       try {
         await toClipboard(codeStr);
-        ElMessage.success("复制成功！")
+        ElMessage("复制成功！")
         console.log('Copied to clipboard')
       } catch (e) {
         console.error(e)
