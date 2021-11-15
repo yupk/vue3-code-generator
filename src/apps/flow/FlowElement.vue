@@ -1,38 +1,48 @@
 <template>
-  <div class="flow-row">
-    <template v-if="  ele.type=='condition'">
-      <div v-flow:condition class="el" :class="ele.type" :id="ele.id" v-flow="ele">{{ ele.text }}</div>
+
+<div class="flow-row" v-if="isCondition">
+  <div class="el condition" ></div>
+
+</div>
+  <div class="flow-col" v-for="item in ele" :key="item.id">
+    <template v-if="item.type == 'condition'">
+      <div
+        v-flow:condition
+        class="el"
+        :class="item.type"
+        :id="item.id"
+        v-flow="item"
+      >{{ item.text }}</div>
     </template>
 
     <template v-else>
-      <div :class="ele.type" class="el" :id="ele.id" v-flow="ele">{{ ele.text }}</div>
+      <div  v-flow:default :class="item.type" class="el" :id="item.id" v-flow="item">{{ item.text }}</div>
     </template>
-  </div>
-  <div class="flow-col" v-if="ele.son">
-    <flow-element :ele="ele.son"></flow-element>
-
-    <div class="flow-row">
-      <flow-element v-for="son in ele.son.child" :key="son.id" :ele="son"></flow-element>
-    </div>
   </div>
 </template>
  
 <script>
 import { computed, defineComponent, ref } from "vue";
-
+ 
 export default defineComponent({
   name: "FlowElement",
   emits: [],
   props: {
-    ele: {}
+    ele: []
   },
 
   setup(props, ctx) {
+    const isCondition=computed(function(){
 
-
+      for(let item of props.ele){
+        if(item.type=='condition'){
+          return true;
+        }
+      }
+    })
 
     return {
-
+isCondition
     };
   },
 });

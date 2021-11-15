@@ -51,25 +51,21 @@ const lines = {
 const plumbIns = jsPlumb.getInstance();
 
 plumbIns.importDefaults(connectorStyle);
-console.log(plumbIns.Defaults)
+
 export default {
     install: (app, options) => {
-
-
         app.directive('flow', function (el, binding) {
-            console.log(binding)
+            console.log(binding);
+            let lineType=binding.arg;
+            console.log(lineType);
             let ele = binding.value;
-
-         
 
             if ( ele && ele.father) {
                  
                 plumbIns.connect({
                     target: el,
                     source: ele.father,
-                    overlays: ele.father.indexOf("son")>-1   ? lines['condition'] : lines.default,
-
-
+                    overlays:  lines[lineType] ,
 
                 });
             }
