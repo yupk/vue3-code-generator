@@ -11,16 +11,16 @@ const connectorStyle = {
 
     Endpoints: [
         ["Dot", {
-            radius: 7
+            radius: 4
         }],
         ["Dot", {
-            radius: 11
+            radius: 5
         }]
     ],
     EndpointStyles: [{
-        fill: "#225588"
+        fill: "#3296fa"
     }, {
-        fill: "#558822"
+        fill: "#3296fa"
     }]
 
 
@@ -28,10 +28,10 @@ const connectorStyle = {
 
 const lines = {
     condition: [
-      
+
     ],
     default: [
-       
+
         ['Label', {
             label: '<button class="add-node-btn">+</button>',
             cssClass: '',
@@ -48,26 +48,36 @@ const lines = {
         }],
     ]
 }
-const plumbIns = jsPlumb.getInstance();
 
-plumbIns.importDefaults(connectorStyle);
 
 export default {
+
+
     install: (app, options) => {
+        const plumbIns = jsPlumb.getInstance();
+
+        plumbIns.importDefaults(connectorStyle);
+        app.provide("plumbIns", plumbIns);
+
+        app.config.globalProperties.$plumbIns = () => {
+            console.log(1)
+        };
         app.directive('flow', function (el, binding) {
-            console.log(binding);
-            let lineType=binding.arg;
-            console.log(lineType);
+
+            let lineType = binding.arg;
+
             let ele = binding.value;
 
-            if ( ele && ele.father) {
-                 
-                plumbIns.connect({
-                    target: el,
-                    source: ele.father,
-                    overlays:  lines[lineType] ,
+            if (ele && ele.father) {
+                for (let f of ele.father) {
+                    plumbIns.connect({
+                        target: el,
+                        source: f,
+                        overlays: lines[lineType],
 
-                });
+                    });
+                }
+
             }
 
         })

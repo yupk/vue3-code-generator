@@ -7,4 +7,5 @@ import flow from '@/utils/flow'
 const app = createApp(App);
 app.use(ElementPlus);
 app.use(flow);
+ 
 app.mount('#app');
