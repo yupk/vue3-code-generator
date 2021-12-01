@@ -11,10 +11,23 @@
       >+</div>
 
       <div v-else class="el" :class="ele.type" :id="ele.id" v-flow="ele">
-        {{ ele.text }}
+        <el-popover
+          placement="right"
+          title="Title"
+          :width="200"
+          trigger="hover"
+          content="this is content, this is content, this is content"
+        >
+          <template #reference>
+            <span>{{ ele.text }}</span>
+          </template>
+        </el-popover>
+
+        <!-- <div class="btn-box-bg">
+           
         <div class="btn-box">
           <el-button @click="addElement(ele, 'default')">添加</el-button>
-        </div>
+        </div> </div>-->
       </div>
     </div>
 
@@ -77,9 +90,9 @@ export default defineComponent({
 .ctrl {
   border: 1px solid #3296fa;
   cursor: pointer;
-  width: 60px;
-  height: 60px;
-  line-height: 60px;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
   color: #fff;
   outline: none;
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
@@ -124,14 +137,18 @@ m-top-min {
   box-shadow: 0 2px 4px 0 rgb(0 0 0 / 10%);
   border: none;
 }
-.el:hover .btn-box {
+.el:hover .btn-box-bg {
   display: block;
 }
-.btn-box {
+.btn-box-bg {
   position: absolute;
-  right: -80%;
+  right: 0;
   top: -3%;
   display: none;
+  width: 300px;
+  height: 200px;
+}
+.btn-box {
   border: 1px solid rgba(17, 31, 44, 0.12);
   border-radius: 8px;
   padding: 10px;

@@ -36,8 +36,10 @@ export default {
           {
             text: "id2", id: "id2", type: "condition", father: ["ctl2"], level: 2, childrens: [], son:
 
-              { text: "id-3-1", id: "id-3-1", type: "condition",
-               father: ["id2"], level: 3, childrens: [], son: false },
+            {
+              text: "id-3-1", id: "id-3-1", type: "condition",
+              father: ["id2"], level: 3, childrens: [], son: false
+            },
 
           },
           { text: "id3", id: "id3", type: "condition", father: ["ctl2"], level: 2, son: false, childrens: [] },
@@ -53,7 +55,7 @@ export default {
     const repaint = async () => {
 
       await nextTick();
-      plumbIns.repaintEverything(false, true)
+      plumbIns.repaintEverything(false, true);
     }
 
     const addElement = function (ele, type) {
