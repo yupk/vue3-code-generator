@@ -56,7 +56,7 @@
 <script>
 import { defineComponent, computed, ref, watch, inject, reactive } from "vue";
 import InputIcon from "@/components/form/InputIcon.vue";
-import {CopyDocument,Delete}  from "@element-plus/icons";
+import {CopyDocument,Delete}  from  "@element-plus/icons-vue";;
 export default defineComponent({
   name: "element-render",
   components: { InputIcon ,CopyDocument,Delete},

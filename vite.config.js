@@ -26,8 +26,8 @@ export default defineConfig({
         rollupOptions: {
             input: {
                 main: "./index.html",
-                tool: "./tool.html",
-                flow: "./flow.html",
+                tool: "./tool.html"
+
             },
         },
     },

@@ -36,7 +36,7 @@
 </template>
 <script>
 import { computed, defineComponent, ref } from "vue";
-import { Plus } from "@element-plus/icons";
+import { Plus } from "@element-plus/icons-vue";
 export default defineComponent({
   name: "UploadWarp",
   emits: ["update:modelValue"],

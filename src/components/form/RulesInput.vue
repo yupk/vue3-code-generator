@@ -48,7 +48,7 @@
 </template>
 <script>
 import {deepClone, randFieldId} from "@/utils/func.js";
-import {CircleCloseFilled} from "@element-plus/icons";
+import {CircleCloseFilled} from  "@element-plus/icons-vue";
 import {defineComponent, nextTick, reactive, ref, toRaw,watch,computed} from "vue";
 
 export default defineComponent({

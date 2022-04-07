@@ -112,7 +112,7 @@ import {
   Delete,
   Download,
   DocumentCopy
-} from "@element-plus/icons";
+} from  "@element-plus/icons-vue";
 import { defineComponent, provide, reactive, ref, watch } from "vue";
 
 export default defineComponent({
