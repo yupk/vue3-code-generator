@@ -35,7 +35,7 @@ export const eleRenderFormat = function (conf, eleName) {
         return null
     }
 
-    // { "__val__": "formData", "input_type": "input_text", "label": "表单模型" }
+
     const types = {
         input_text: {
             childrens: [],
@@ -135,7 +135,7 @@ export const eleRenderSetFormat = function (conf) {
 
         eles.push(eleRenderFormat(conf.__text, '__text'))
     }
-  
+
     for (let f in conf.attrs) {
         let item = conf.attrs[f];
         eles.push(eleRenderFormat(item, f))

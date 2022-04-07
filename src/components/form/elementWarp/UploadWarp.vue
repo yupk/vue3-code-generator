@@ -5,7 +5,8 @@
         <template v-if="files.length > 0">
           <img v-for="f in files" :src="f.url" class="avatar" :key="f.url" />
         </template>
-        <i v-else class="el-icon-plus avatar-uploader-icon"></i>
+
+        <el-icon v-else class="avatar-uploader-icon"><plus /></el-icon>
       </template>
       <i v-else class="el-icon-upload">
         <div class="el-upload__text" style="font-size: 14px">
@@ -35,10 +36,11 @@
 </template>
 <script>
 import { computed, defineComponent, ref } from "vue";
-
+import { Plus } from "@element-plus/icons";
 export default defineComponent({
   name: "UploadWarp",
   emits: ["update:modelValue"],
+  components: { Plus },
   props: {
     modelValue: Array,
     uploadType: String,

@@ -33,11 +33,6 @@
         ctx.emit("update:modelValue", e);
       };
 
-      // watch(vm, () => {
-      //   console.log(vm);
-
-      //   // ctx.emit("update:modelValue", vm);
-      // });
       return { vm, ini, update };
     },
   });

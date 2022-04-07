@@ -7,10 +7,8 @@ const formConf = {
     props: {}, childrens: [],
     __rules: {},
     attrs: {
-        __formRef: helper.input_text("表单名", 'elForm'),
+        __formRef: helper.input_text("表单名", 'refForm'),
         __formModel: helper.input_text("表单模型", 'formData'),
-       
-        
         size: helper.input_radio("表单尺寸", [{
             key: "medium",
             value: "中等"
@@ -32,7 +30,6 @@ const formConf = {
             value: "顶部对齐"
         }], "right"),
         labelWidth: helper.input_number("标签宽度", 100),
-
         disabled: helper.input_boolean("禁用", false),
         inline: helper.input_boolean("行内模式", false),
         hideRequiredAsterisk: helper.input_boolean("必填标星", false),
@@ -41,12 +38,9 @@ const formConf = {
 }
 
 
-
-
 const elements = {
-    base: { eles: [], title: "基本组件" },
-    form: { eles: [], title: "表单组件" },
-
+    base: {eles: [], title: "基本组件"},
+    form: {eles: [], title: "表单组件"},
 };
 
 let files =
@@ -56,8 +50,7 @@ let files =
 for (const key in files) {
     elements.form.eles.push(files[key].default)
 }
-files =
-    import.meta.globEager('./element/base/*.js');
+files = import.meta.globEager('./element/base/*.js');
 
 
 for (const key in files) {

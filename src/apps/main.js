@@ -14,7 +14,7 @@ import UploadWarp from "@/components/form/elementWarp/UploadWarp.vue";
 import zhCn from 'element-plus/es/locale/lang/zh-cn';
 import hljs from 'highlight.js';
 import 'highlight.js/styles/googlecode.css' //样式文件
-
+import { ElIcon } from 'element-plus';
 
 const app = createApp(App);
 app.use(ElementPlus, {

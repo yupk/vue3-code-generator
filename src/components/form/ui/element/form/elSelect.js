@@ -21,7 +21,7 @@ export default {
         tag: "el-select",
         name: "select选择",
         __openRules: false,
-        tagIcon: " select",
+        tagIcon: "select",
         ctrlBtn: true,
         defaultvalue: "",
 

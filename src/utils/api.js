@@ -23,8 +23,6 @@ axios.interceptors.request.use(function (config) {
 
 export class Api {
     static Callback(res, resolve) {
-
-        
         if (res.data.code !== 0) {
             ElMessage.error(res.data.data.msg);
         } else {

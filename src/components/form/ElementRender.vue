@@ -7,14 +7,14 @@
           @click="deleteItem(__ID)"
           title="删除"
         >
-          <i class="el-icon-delete"></i>
+         <el-icon><delete /></el-icon>
         </span>
         <span
           class="tool-btn tool-btn-copy _btn"
           @click="copyItem(__ID)"
           title="复制"
         >
-          <i class="el-icon-copy-document"></i>
+          <el-icon><copy-document /></el-icon>
         </span>
       </template>
 
@@ -56,10 +56,10 @@
 <script>
 import { defineComponent, computed, ref, watch, inject, reactive } from "vue";
 import InputIcon from "@/components/form/InputIcon.vue";
-
+import {CopyDocument,Delete}  from "@element-plus/icons";
 export default defineComponent({
   name: "element-render",
-  components: { InputIcon },
+  components: { InputIcon ,CopyDocument,Delete},
 
   emits: ["update", "updateChild", "rm", "deleteItem", "copyItem"],
   props: {

@@ -11,6 +11,7 @@
         clearable
       />
     </div>
+
     <ul ref="iconWrap" class="icon-ul">
       <li
         v-for="icon in iconList"

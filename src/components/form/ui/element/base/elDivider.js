@@ -5,7 +5,7 @@ export default {
         tag: "el-divider",
         name: "分割线",
         __openRules: false,
-        tagIcon: "divider",
+        tagIcon: "line",
         __text: helper.input_text("文本内容", "分割线"),
         slots: {
 

@@ -6,9 +6,6 @@
         <el-form-item>
             <el-row>
           <template v-for="(item, index) in staticData" :key="'index' + index">
-          
-
-      
             <el-col :span="11">
               <el-form-item
                 label="选项名"

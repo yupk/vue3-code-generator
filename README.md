@@ -1,7 +1,6 @@
 ![image](https://ae01.alicdn.com/kf/U51bfb661aba945b48a4c71774421d414C.gif)
 ## 简介
-本项目借鉴  https://github.com/JakHuang/form-generator ，用vue3 和elementu-next 进行了重新
-
+拖拽生成 vue3 表单
 ## 在线预览 
 [地址](https://yupk.github.io/vue3-code-generator/)
 
