@@ -24,7 +24,7 @@ const formConf = {
             value: "右对齐"
         }, {
             key: "left",
-            value: "右对齐"
+            value: "左对齐"
         }, {
             key: "top",
             value: "顶部对齐"
